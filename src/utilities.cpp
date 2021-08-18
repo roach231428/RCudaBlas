@@ -29,6 +29,19 @@ NumericMatrix matrix_multiplication_cuda(NumericMatrix mat1, NumericMatrix mat2)
 }
 
 // [[Rcpp::export]]
+NumericMatrix matrix_add_cuda(NumericMatrix mat1, NumericMatrix mat2){
+  if((mat1.ncol() != mat2.ncol()) | (mat1.nrow() != mat2.nrow()))
+    stop("size of matrices mismatch.");
+  int M = mat1.nrow();
+  int N = mat1.ncol();
+  NumericMatrix returnMat(M, N);
+  
+  matrix_add_gpu(&mat1(0,0), &mat2(0,0), &returnMat(0,0), M, N);
+  
+  return returnMat;
+}
+
+// [[Rcpp::export]]
 NumericMatrix matrix_multiplication_cuBLAs(NumericMatrix mat1, NumericMatrix mat2){
   if(mat1.ncol() != mat2.nrow())
     stop("size of matrices mismatch.");

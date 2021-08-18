@@ -5,6 +5,10 @@ matrix_multiplication_cuda <- function(mat1, mat2) {
     .Call(`_RCudaBlas_matrix_multiplication_cuda`, mat1, mat2)
 }
 
+matrix_add_cuda <- function(mat1, mat2) {
+    .Call(`_RCudaBlas_matrix_add_cuda`, mat1, mat2)
+}
+
 matrix_multiplication_cuBLAs <- function(mat1, mat2) {
     .Call(`_RCudaBlas_matrix_multiplication_cuBLAs`, mat1, mat2)
 }

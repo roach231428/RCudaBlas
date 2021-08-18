@@ -22,6 +22,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// matrix_add_cuda
+NumericMatrix matrix_add_cuda(NumericMatrix mat1, NumericMatrix mat2);
+RcppExport SEXP _RCudaBlas_matrix_add_cuda(SEXP mat1SEXP, SEXP mat2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type mat1(mat1SEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type mat2(mat2SEXP);
+    rcpp_result_gen = Rcpp::wrap(matrix_add_cuda(mat1, mat2));
+    return rcpp_result_gen;
+END_RCPP
+}
 // matrix_multiplication_cuBLAs
 NumericMatrix matrix_multiplication_cuBLAs(NumericMatrix mat1, NumericMatrix mat2);
 RcppExport SEXP _RCudaBlas_matrix_multiplication_cuBLAs(SEXP mat1SEXP, SEXP mat2SEXP) {
@@ -37,6 +49,7 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_RCudaBlas_matrix_multiplication_cuda", (DL_FUNC) &_RCudaBlas_matrix_multiplication_cuda, 2},
+    {"_RCudaBlas_matrix_add_cuda", (DL_FUNC) &_RCudaBlas_matrix_add_cuda, 2},
     {"_RCudaBlas_matrix_multiplication_cuBLAs", (DL_FUNC) &_RCudaBlas_matrix_multiplication_cuBLAs, 2},
     {NULL, NULL, 0}
 };

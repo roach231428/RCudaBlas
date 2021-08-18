@@ -1,1 +1,2 @@
 void matrix_multiplication_gpu(const double* mat1, const double* mat2, double* result, const int M, const int N, const int S);
+void matrix_add_gpu(const double* mat1, const double* mat2, double* result, const int M, const int N);
